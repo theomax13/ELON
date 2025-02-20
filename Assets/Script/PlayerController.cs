@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,11 +8,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform bulletSpawnPoint;
 
+    [SerializeField] TextMeshProUGUI playerScoreText;
+    private int playerScore = 0; 
     // Update is called once per frame
     void Update()
     {
         HandleMovement();
         ShootProjectile();
+        DisplayScore();
+    }
+
+    private void DisplayScore()
+    {
+        playerScoreText.text = "Score: " + playerScore;
+    }
+
+    public void UpdatePlayerScore()
+    {
+        playerScore += 10;
     }
 
     private void ShootProjectile()
