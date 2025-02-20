@@ -9,13 +9,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform bulletSpawnPoint;
 
     [SerializeField] TextMeshProUGUI playerScoreText;
-    private int playerScore = 0; 
+    [SerializeField] private SpriteRenderer muskSprite;
+    private int playerScore = 0;
+
+    public AudioSource ElonContent;
+    public AudioSource ElonShootContent;
+
+    public AudioSource LesGAZ;
     // Update is called once per frame
     void Update()
     {
         HandleMovement();
         ShootProjectile();
         DisplayScore();
+        if (!ElonContent.isPlaying)
+        {
+            muskSprite.sortingOrder = -1000;
+        }
     }
 
     private void DisplayScore()
@@ -26,12 +36,18 @@ public class PlayerController : MonoBehaviour
     public void UpdatePlayerScore()
     {
         playerScore += 10;
+        if (playerScore == 50)
+        {
+            ElonContent.Play();
+            muskSprite.sortingOrder = 5;
+        }
     }
 
     private void ShootProjectile()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            ElonShootContent.Play();
             Instantiate(projectilePrefab, bulletSpawnPoint.transform.position, Quaternion.identity);
         }
     }
@@ -41,6 +57,7 @@ public class PlayerController : MonoBehaviour
         playerPosition = transform.position;
         if (Input.GetKey(KeyCode.W))
         {
+            LesGAZ.Play();
             playerPosition.y += playerSpeed * Time.deltaTime;
         } else if (Input.GetKey(KeyCode.S))
         {
