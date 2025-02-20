@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MuskReflexion_0: 7966760669176952909
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
