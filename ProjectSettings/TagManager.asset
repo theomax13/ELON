@@ -8,6 +8,7 @@ TagManager:
   - asteroid
   - Ennemi
   - PlayerProjectile
+  - Musk
   layers:
   - Default
   - TransparentFX
